@@ -6,7 +6,7 @@ import { Keg } from './keg.model';
   template: `
   <div class="container">
     <h1>Tap Room for {{month}}/{{day}}/{{year}}</h1>
-    <keg-list [childKegList]="masterKegList" (clickSender)="editKeg($event)"></keg-list>
+    <keg-list [childKegList]="masterKegList" (clickSellButton)="editPintsLeft($event)" (clickSender)="editKeg($event)"></keg-list>
     <hr>
     <edit-keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender)="finishedEditing()"></edit-keg>
   </div>
@@ -32,5 +32,9 @@ export class AppComponent {
 
   finishedEditing() {
     this.selectedKeg = null;
+  }
+
+  editPintsLeft(updatePint) {
+    updatePint.pintsLeft = updatePint.pintsLeft - 1;
   }
 }
