@@ -17,12 +17,15 @@ export class AppComponent {
   month: number = this.currentTime.getMonth() + 1;
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
-  firstKeg = {
-    name: "Mt. Takhoma Blonde",
-    brand: "German Pilsner Malt",
-    price: "5.00",
-    alcoholContent: "4.4%",
-    pintsLeft: "124"
+  firstKeg: Keg = new Keg("Mt. Takhoma Blonde", "German Pilsner Malt", 5.00, "4.4%", 124);
   }
 
+
+
+export class Keg {
+  public lessThan10Pints: boolean = false;
+
+  constructor(public name: string, public brand: string, public price: number, public alcoholContent: string, public pintsLeft: number) {
+
+  }
 }
