@@ -10,23 +10,26 @@ import { Component } from '@angular/core';
     </ul>
     <hr>
     <div>
-      <h3>{{selectedKeg.name}}</h3>
-      <p>Pints left: {{selectedKeg.pintsLeft}}</p>
-      <h3>Edit Keg</h3>
-      <label>Enter Keg Name:</label>
-      <input [(ngModel)]="selectedKeg.name">
-      <br>
-      <label>Enter Keg Brand:</label>
-      <input [(ngModel)]="selectedKeg.brand">
-      <br>
-      <label>Enter Keg Price:</label>
-      <input [(ngModel)]="selectedKeg.price">
-      <br>
-      <label>Enter Keg Alcohol Content:</label>
-      <input [(ngModel)]="selectedKeg.alcoholContent">
-      <br>
-      <label>Enter Keg Pints:</label>
-      <input [(ngModel)]="selectedKeg.pintsLeft">
+      <div *ngIf="selectedKeg">
+        <h3>{{selectedKeg.name}}</h3>
+        <p>Pints left: {{selectedKeg.pintsLeft}}</p>
+        <h3>Edit Keg</h3>
+        <label>Enter Keg Name:</label>
+        <input [(ngModel)]="selectedKeg.name">
+        <br>
+        <label>Enter Keg Brand:</label>
+        <input [(ngModel)]="selectedKeg.brand">
+        <br>
+        <label>Enter Keg Price:</label>
+        <input [(ngModel)]="selectedKeg.price">
+        <br>
+        <label>Enter Keg Alcohol Content:</label>
+        <input [(ngModel)]="selectedKeg.alcoholContent">
+        <br>
+        <label>Enter Keg Pints:</label>
+        <input [(ngModel)]="selectedKeg.pintsLeft">
+        <button (click)="finishedEditing()">Done</button>
+      </div>
     </div>
   </div>
   `
@@ -42,7 +45,7 @@ export class AppComponent {
     new Keg("PINNACLE PEAK PALE ALE", "German malted barley", 7.00, "5.4%", 124),
     new Keg("PUGET SOUND PORTER", "Columbus and Centennial", 10.00, "8.9%", 124)
   ];
-selectedKeg: Keg = this.kegs[0];
+selectedKeg = null;
 
   editKeg(clickedKeg) {
     this.selectedKeg = clickedKeg;
@@ -64,9 +67,11 @@ selectedKeg: Keg = this.kegs[0];
     }
   }
 
+  finishedEditing() {
+    this.selectedKeg = null;
+  }
 
 }
-
 
 
 export class Keg {
