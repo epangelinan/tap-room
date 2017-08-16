@@ -15,7 +15,7 @@ export class KegListComponent {
   @Output() clickSender = new EventEmitter();
 
   lowSupply(clickedKeg: Keg) {
-    if(clickedKeg.lessThan10Pints === true) {
+    if(clickedKeg.pintsLeft <= 10) {
       alert("There are less than 10 pints left");
     } else {
       alert("There are more than 10 pints for this keg");
