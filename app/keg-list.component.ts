@@ -8,6 +8,7 @@ import { Keg } from './keg.model';
     <option value="allBeers">All Beers</option>
     <option value="strongBeer">Strong Beer (10% and up)</option>
     <option value="weakerBeer">Weaker Beer (10% or less)</option>
+    <option value="lowSupply">Low Supply</option>
   </select>
 
   <ul>

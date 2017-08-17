@@ -24,6 +24,13 @@ export class CompletenessPipe implements PipeTransform {
           }
         }
         return output;
+    } else if (desiredCompleteness === "lowSupply") {
+      for (var i = 0; i < input.length; i++) {
+        if( input[i].pintsLeft < 10) {
+          output.push(input[i]);
+        }
+      }
+      return output;
     } else {
         return input;
     }
